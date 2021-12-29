@@ -36,14 +36,13 @@ console.log(isPalindrome('Ana'));
 const largestPair = function(array) {
   const prodArray = [];
   for (let i = 0; i < array.length - 1; i = i + 1) {
-      prodArray.push(array[i] * array[i + 1]);
+    prodArray.push(array[i] * array[i + 1]);
   }
   const largestProd = prodArray.sort((a, b) => {
     return a - b;
   }).pop();
   return largestProd;
 };
-
 console.log(largestPair([5, 1, 2, 3, 1, 4]));
 console.log(largestPair([9, 5, 10, 2, 24, -1, -48]));
 
