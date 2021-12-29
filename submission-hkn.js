@@ -1,23 +1,25 @@
 const findSum = function(array) {
-  const sum = arr.reduce((previousVal, currentVal) => {
+  const sum = array.reduce((previousVal, currentVal) => {
     return previousVal + currentVal;
   })
   return sum;
 };
+console.log(findSum([2, 4, 6]));
 
 const findFrequency = function(array) {
-  const sortedMost = arr.sort((a, b) =>
-    arr.filter(el => el === a).length - arr.filter(el => el === b).length
+  const sortedMost = array.sort((a, b) =>
+    array.filter(el => el === a).length - array.filter(el => el === b).length
   ).pop();
-  const sortedLeast = arr.sort((a, b) =>
-    arr.filter(el => el === b).length - arr.filter(el => el === a).length
+  const sortedLeast = array.sort((a, b) =>
+    array.filter(el => el === b).length - array.filter(el => el === a).length
   ).pop();
   const obj = {
     most: sortedMost,
-    lease: sortedLeast
+    least: sortedLeast
   };
   return obj;
 };
+console.log(findFrequency(['a', 'b', 'c', 'a', 'b', 'c', 'a', 'a', 'd']));
 
 const isPalindrome = function(str) {
   str = str.toLowerCase();
@@ -28,14 +30,22 @@ const isPalindrome = function(str) {
 
   return str === reversedStr ? true : false;
 };
+console.log(isPalindrome('canal'));
+console.log(isPalindrome('Ana'));
 
 const largestPair = function(array) {
-  const compareNum = (a, b) => {
+  const prodArray = [];
+  for (let i = 0; i < array.length - 1; i = i + 1) {
+      prodArray.push(array[i] * array[i + 1]);
+  }
+  const largestProd = prodArray.sort((a, b) => {
     return a - b;
-  };
-  const largestPairArr = arr.sort(compareNum).slice(-2);
-  return largestPairArr[0] * largestPairArr[1];
+  }).pop();
+  return largestProd;
 };
+
+console.log(largestPair([5, 1, 2, 3, 1, 4]));
+console.log(largestPair([9, 5, 10, 2, 24, -1, -48]));
 
 const removeParenth = function(str) {
   str = str.split('');
@@ -47,6 +57,7 @@ const removeParenth = function(str) {
     }
   }
 };
+console.log(removeParenth('ido(not)liketocode'));
 
 const scoreScrabble = function(str) {
   const alphabet = {
@@ -78,9 +89,11 @@ const scoreScrabble = function(str) {
     z: 10
   };
   let sum = 0;
-  for (let i = 0; i < word.length; i++) {
-      const letter = word[i];
+  for (let i = 0; i < str.length; i++) {
+      const letter = str[i];
       sum += alphabet[letter];
   }
   return sum;
 };
+console.log(scoreScrabble('hello'));
+console.log(scoreScrabble('quiet'));
